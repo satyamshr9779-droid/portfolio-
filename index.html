@@ -14,8 +14,8 @@ Nothing here is real information about you.
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Portfolio — [Satyam Sharma]</title>
-<meta name="description" content="Portfolio of [Satyam Sharma]">
+<title>Satyam Sharma — Cybersecurity Portfolio</title>
+<meta name="description" content="Portfolio of Satyam Sharma">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
@@ -136,8 +136,8 @@ footer{text-align:center;color:var(--dim);font-size:13px;padding:32px 16px}
 
 <main id="main">
   <section id="home" class="hero" style="margin-top:32px">
-    <h1 id="hName">[YOUR NAME]</h1>
-    <p class="tag" id="hTag">[YOUR ROLE] — [ONE-LINE VALUE STATEMENT]</p>
+    <h1 id="hName">Satyam Sharma</h1>
+    <p class="tag" id="hTag">Cybersecurity Enthusiast — Learning to find weaknesses before attackers do.</p>
     <div class="win" style="margin-top:24px">
       <div class="win-top" aria-hidden="true"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span>guest@portfolio: ~</span></div>
       <div class="win-body">
@@ -195,27 +195,30 @@ footer{text-align:center;color:var(--dim);font-size:13px;padding:32px 16px}
    Remove any item you don't need; add more by copying a block.
    ============================================================ */
 const DATA = {
-  name: "[YOUR NAME]",
-  role: "[YOUR ROLE]",
-  tagline: "[ONE-LINE VALUE STATEMENT]",
+  name: "Satyam Sharma",
+  role: "Cybersecurity Enthusiast",
+  tagline: "Learning to find weaknesses before attackers do.",
   email: "your.email@example.com",
   about: [
-    "[Two or three sentences about who you are and what you do.]",
-    "[One sentence on your strongest achievement or focus area.]"
+    "I am Satyam Sharma, focused on cybersecurity: understanding how systems break so they can be defended better.",
+    "My work centres on network security, web application security and security automation."
   ],
   skills: [
-    { name: "[Skill 1]", level: 90 },
-    { name: "[Skill 2]", level: 80 },
-    { name: "[Skill 3]", level: 70 },
-    { name: "[Skill 4]", level: 60 }
+    { name: "Network Security", level: 80 },
+    { name: "Web App Security", level: 75 },
+    { name: "Linux & Bash", level: 80 },
+    { name: "Python Scripting", level: 70 },
+    { name: "Threat Analysis", level: 65 }
   ],
+  /* SAMPLE PROJECTS — replace with your real projects, descriptions and links */
   projects: [
-    { title: "[Project name]", desc: "[What it does and the result it achieved.]", stack: ["[Tech]", "[Tech]"], url: "" },
-    { title: "[Project name]", desc: "[What it does and the result it achieved.]", stack: ["[Tech]"], url: "" }
+    { title: "Network Port Scanner", desc: "Python tool that scans hosts in a lab network for open ports and flags risky exposed services.", stack: ["Python", "Sockets", "Nmap"], url: "" },
+    { title: "Phishing URL Detector", desc: "Classifier that inspects URL patterns and domain features to flag likely phishing links.", stack: ["Python", "scikit-learn"], url: "" },
+    { title: "Log Analyzer & Alert System", desc: "Parses server logs to detect brute-force login attempts and raises alerts on suspicious activity.", stack: ["Python", "Regex", "Linux"], url: "" },
+    { title: "Password Strength & Breach Checker", desc: "Evaluates password strength and checks credentials against known-breach patterns locally.", stack: ["JavaScript", "Python"], url: "" },
+    { title: "Vulnerable Web Lab Writeups", desc: "Documented walkthroughs of SQL injection and XSS found and fixed in intentionally vulnerable apps.", stack: ["DVWA", "Burp Suite", "OWASP Top 10"], url: "" }
   ],
-  experience: [
-    { role: "[Job title]", org: "[Company]", when: "[Start – End]", points: ["[Impact bullet]", "[Impact bullet]"] }
-  ],
+  experience: [],
   links: [
     { label: "GitHub", url: "" },
     { label: "LinkedIn", url: "" }
@@ -234,7 +237,7 @@ const safeUrl = u => /^https?:\/\//i.test(u) ? u : "";
 const reduce = matchMedia("(prefers-reduced-motion:reduce)").matches;
 
 /* ---------- render static sections ---------- */
-document.title = "Portfolio — " + DATA.name;
+document.title = DATA.name + " — Cybersecurity Portfolio";
 $("#hName").textContent = DATA.name;
 $("#hTag").textContent = DATA.role + " — " + DATA.tagline;
 DATA.about.forEach(t => $("#aboutBody").append(el("p", { text: t, style: "margin:0 0 10px" })));
@@ -257,6 +260,10 @@ DATA.projects.forEach((p, i) => {
   $("#log").append(c);
 });
 
+if (!DATA.experience.length) {
+  document.getElementById("experience").remove();
+  document.querySelector('.bar a[href="#experience"]').remove();
+}
 DATA.experience.forEach(x => {
   $("#chg").append(el("article", {}, [
     el("h3", { text: x.role + " · " + x.org }),
@@ -288,12 +295,12 @@ function out(text, cls = "") {
 }
 const go = id => { const t = document.getElementById(id); if (t) t.scrollIntoView({ behavior: reduce ? "auto" : "smooth" }); };
 const commands = {
-  help: () => out("commands: about  skills  projects  experience  contact  whoami  clear", "w"),
+  help: () => out("commands: about  skills  projects  contact  whoami  clear", "w"),
   whoami: () => out(DATA.name + " — " + DATA.role),
   about: () => { DATA.about.forEach(t => out(t)); go("about"); },
   skills: () => { DATA.skills.forEach(s => out(s.name.padEnd(18, ".") + s.level + "%")); go("skills"); },
   projects: () => { DATA.projects.forEach(p => out("▸ " + p.title)); go("projects"); },
-  experience: () => { DATA.experience.forEach(x => out("▸ " + x.role + " @ " + x.org + " (" + x.when + ")")); go("experience"); },
+  experience: () => { if (!DATA.experience.length) return out("no experience entries yet", "d"); DATA.experience.forEach(x => out("▸ " + x.role + " @ " + x.org + " (" + x.when + ")")); go("experience"); },
   contact: () => { out("email: " + DATA.email, "p"); go("contact"); },
   clear: () => { term.textContent = ""; }
 };
@@ -309,7 +316,7 @@ input.addEventListener("keydown", e => {
   if (e.key === "ArrowUp" && history.length) { hi = Math.max(0, hi - 1); input.value = history[hi]; e.preventDefault(); }
   if (e.key === "ArrowDown") { hi = Math.min(history.length, hi + 1); input.value = history[hi] || ""; e.preventDefault(); }
 });
-["about", "skills", "projects", "experience", "contact"].forEach(c =>
+["about", "skills", "projects", "experience", "contact"].filter(c => c !== "experience" || DATA.experience.length).forEach(c =>
   $("#chips").append(el("button", { type: "button", text: "> " + c }))
 );
 $("#chips").addEventListener("click", e => {
