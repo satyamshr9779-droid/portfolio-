@@ -10,6 +10,7 @@ that prints in as you scroll. All content comes from the resume; nothing invente
 <head>
 <meta charset="utf-8">
 <meta name="theme-color" content="#05070d">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2048%2048%27%3E%3Cdefs%3E%3ClinearGradient%20id%3D%27g%27%20x1%3D%270%27%20y1%3D%270%27%20x2%3D%271%27%20y2%3D%271%27%3E%3Cstop%20offset%3D%270%27%20stop-color%3D%27%233b82f6%27/%3E%3Cstop%20offset%3D%271%27%20stop-color%3D%27%2322d3ee%27/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath%20d%3D%27M24%203.5%20L41%2012.5%20V29%20C41%2037.5%2032.5%2043%2024%2045%20C15.5%2043%207%2037.5%207%2029%20V12.5%20Z%27%20fill%3D%27%2305070d%27%20stroke%3D%27url%28%23g%29%27%20stroke-width%3D%272.6%27/%3E%3Cpath%20d%3D%27M31%2017.5%20C31%2014.5%2027.8%2013%2024%2013%20C20%2013%2017%2014.8%2017%2018.2%20C17%2021.8%2020.4%2022.8%2024%2024%20C27.6%2025.2%2031%2026.2%2031%2029.8%20C31%2033.2%2028%2035%2024%2035%20C20.2%2035%2017%2033.5%2017%2030.5%27%20fill%3D%27none%27%20stroke%3D%27url%28%23g%29%27%20stroke-width%3D%273.8%27%20stroke-linecap%3D%27round%27/%3E%3Ccircle%20cx%3D%2731%27%20cy%3D%2717.5%27%20r%3D%272.6%27%20fill%3D%27%23ff7a2f%27/%3E%3Ccircle%20cx%3D%2717%27%20cy%3D%2730.5%27%20r%3D%272.6%27%20fill%3D%27%23ff7a2f%27/%3E%3C/svg%3E">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Satyam Sharma — Cybersecurity &amp; Ethical Hacking Portfolio</title>
 <meta name="description" content="Satyam Sharma, B.Tech CSE student at GNA University focused on cybersecurity and ethical hacking. Web vulnerability testing, Linux, Kali and Termux.">
@@ -232,10 +233,32 @@ h1 em.wipe{display:inline-block;clip-path:inset(0 100% 0 0);animation:wipe .95s 
 .card:not(#scan):hover::after{transform:scaleX(1)}
 .ticker span:nth-child(even){color:var(--warn)}
 @media (prefers-reduced-motion:reduce){.l{opacity:1;transform:none}h1 em.wipe{clip-path:none}.gridbg{animation:none}h1{animation:none!important}#boot{display:none!important}}
+ 
+/* ---------- v5: custom shield-S circuit logo ---------- */
+.logo{gap:12px}
+.mark{width:40px;height:40px;flex:none;overflow:visible;transition:transform .4s cubic-bezier(.2,.8,.2,1),filter .4s}
+.mk-shield{fill:color-mix(in srgb,var(--a1) 14%,transparent);stroke:url(#lg);stroke-width:2.2;stroke-linejoin:round}
+.mk-s{fill:none;stroke:url(#lg);stroke-width:3.4;stroke-linecap:round}
+.mk-shield,.mk-s{stroke-dasharray:100;stroke-dashoffset:100;animation:draw 1.3s .25s ease forwards}
+.mk-s{animation-delay:.7s}
+@keyframes draw{to{stroke-dashoffset:0}}
+.mk-n{fill:var(--warn);transform-box:fill-box;transform-origin:center;opacity:0;animation:nodein .4s 1.7s forwards,nodepulse 2.4s 2.1s ease-in-out infinite}
+.mk-n.n2{animation-delay:1.9s,2.5s}
+@keyframes nodein{to{opacity:1}}
+@keyframes nodepulse{50%{transform:scale(1.55)}}
+.logo:hover .mark{transform:rotate(-8deg) scale(1.1);filter:drop-shadow(0 0 8px var(--a2))}
+.wm{display:flex;flex-direction:column;line-height:1.1}
+.wm strong{font:700 15px var(--head);letter-spacing:.16em}
+.wm small{font:500 10.5px var(--mono);color:var(--warn);letter-spacing:.08em;margin-top:4px}
+.bootmark{width:92px;height:92px;display:block;margin:0 auto 20px;filter:drop-shadow(0 0 16px rgba(34,211,238,.45))}
+.booting .logo .mark *{animation-play-state:paused}
+@media (max-width:420px){.wm small{display:none}.wm strong{font-size:14px;letter-spacing:.12em}}
+@media (prefers-reduced-motion:reduce){.mk-shield,.mk-s{stroke-dashoffset:0}.mk-n{opacity:1}}
 </style>
 </head>
 <body>
-<div id="boot" aria-hidden="true"><div class="box">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" style="stop-color:var(--a1)"/><stop offset="1" style="stop-color:var(--a2)"/></linearGradient></defs></svg>
+<div id="boot" aria-hidden="true"><div class="box"><svg class="mark bootmark" viewBox="0 0 48 48" role="img" aria-hidden="true" focusable="false"><path class="mk-shield" pathLength="100" d="M24 3.5 L41 12.5 V29 C41 37.5 32.5 43 24 45 C15.5 43 7 37.5 7 29 V12.5 Z"/><path class="mk-s" pathLength="100" d="M31 17.5 C31 14.5 27.8 13 24 13 C20 13 17 14.8 17 18.2 C17 21.8 20.4 22.8 24 24 C27.6 25.2 31 26.2 31 29.8 C31 33.2 28 35 24 35 C20.2 35 17 33.5 17 30.5"/><circle class="mk-n" cx="31" cy="17.5" r="2.4"/><circle class="mk-n n2" cx="17" cy="30.5" r="2.4"/></svg>
 <p style="animation-delay:.1s"><span style="color:#4ade80">[ OK ]</span> initializing secure session</p>
 <p style="animation-delay:.4s"><span style="color:#4ade80">[ OK ]</span> loading profile: SATYAM SHARMA</p>
 <p style="animation-delay:.7s"><span style="color:#ff7a2f">[ .. ]</span> verifying access</p>
@@ -248,7 +271,7 @@ h1 em.wipe{display:inline-block;clip-path:inset(0 100% 0 0);animation:wipe .95s 
 <canvas id="rain" aria-hidden="true"></canvas>
 <a class="skip" href="#main">Skip to content</a>
 <header><div class="wrap">
-<a class="logo" href="#home" aria-label="Satyam Sharma, home"><b>SS</b>Satyam Sharma</a>
+<a class="logo" href="#home" aria-label="Satyam Sharma, home"><svg class="mark " viewBox="0 0 48 48" role="img" aria-hidden="true" focusable="false"><path class="mk-shield" pathLength="100" d="M24 3.5 L41 12.5 V29 C41 37.5 32.5 43 24 45 C15.5 43 7 37.5 7 29 V12.5 Z"/><path class="mk-s" pathLength="100" d="M31 17.5 C31 14.5 27.8 13 24 13 C20 13 17 14.8 17 18.2 C17 21.8 20.4 22.8 24 24 C27.6 25.2 31 26.2 31 29.8 C31 33.2 28 35 24 35 C20.2 35 17 33.5 17 30.5"/><circle class="mk-n" cx="31" cy="17.5" r="2.4"/><circle class="mk-n n2" cx="17" cy="30.5" r="2.4"/></svg><span class="wm"><strong>SATYAM SHARMA</strong><small>// cyber security</small></span></a>
 <nav aria-label="Sections"><ul>
 <li><a href="#projects">Projects</a></li><li><a href="#skills">Skills</a></li><li><a href="#about">About</a></li><li><a href="#education">Education</a></li><li><a href="#contact">Contact</a></li>
 </ul></nav>
